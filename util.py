@@ -3,6 +3,8 @@
 ##### Date: September 10, 2015
 ##### Email: luisperez@college.harvar.edu
 
+# Note: Modifications and tests for the functions are found in util.py.
+
 import copy
 from collections import deque
 
@@ -23,7 +25,7 @@ def matrix_multiply(x, y):
     Returns the matrix X x Y.
     Asserts error if dimensions do not match.
     '''
-    assert len(x) > 0 and len(y > 0)
+    assert len(x) > 0 and len(y) > 0
     xrow, xcol = len(x), len(x[0])
     yrow, ycol = len(y), len(y[0])
     assert xcol == yrow
@@ -46,13 +48,13 @@ class MyQueue:
     def __ne__(self, other):
         return not isinstance(other, MyQueue) or self.q != other.q
     def __str__(self):
-        return "MyQueue:\n %s" % str(self.q)
+        return "MyQueue (head -> tail):\n %s" % str(self.q)
 
 class MyStack:
     def __init__(self):
         self.s = deque()
     def push(self, val):
-        self.s.append()
+        self.s.append(val)
     def pop(self):
         try:
             return self.s.pop()
@@ -63,7 +65,7 @@ class MyStack:
     def __ne__(self, other):
         return not isinstance(other, MyStack) or self.s != other.s
     def __str__(self):
-        return "MyStack:\n %s" % str(self.s)
+        return "MyStack (bottom -> top):\n %s" % str(self.s)
 
 ## Problem 4
 
@@ -71,7 +73,7 @@ def add_position_iter(lst, number_from=0):
     '''
     Essentially iteration, but much leaner than explicit for loops
     '''
-    return [val + i + number_from for i,val enumerate(lst)]
+    return [val + i + number_from for i,val in enumerate(lst)]
 
 def add_position_recur(lst, number_from=0):
     if (len(lst) == 0):
