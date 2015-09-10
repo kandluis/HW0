@@ -88,11 +88,14 @@ def add_position_map(lst, number_from=0):
 
 def remove_course(roster, student, course):
     '''
-    Raises KeyError if student is not present in roster.
+    If student is not registered, does nothing.
     Only removes coures present in student schedule, otherwise does nothing.
     Mutates roster.
     '''
-    roster[student].discard(course)
+    try:
+        roster[student].discard(course)
+    except:
+        pass
 
 
 ## Problem 6
