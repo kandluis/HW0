@@ -94,7 +94,7 @@ def remove_course(roster, student, course):
     '''
     try:
         roster[student].discard(course)
-    except:
+    except KeyError:
         pass
 
 
